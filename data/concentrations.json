@@ -1,0 +1,182 @@
+{
+    "African American Studies": {
+        "link": "http://aas.princeton.edu/",
+        "description": "A study of the complex interplay of political, economic and cultural forces that shape our understanding of the historic achievements and struggles of African-descended people in this country, and their relation to others around the world.",
+        "degree": "ab"
+    },
+    "Anthropology": {
+        "link": "http://www.princeton.edu/anthropology/",
+        "description": "An interpretive approach to contemporary realities and social worlds that people create and inhabit.",
+        "degree": "ab"
+    },
+    "Architecture": {
+        "link": "http://soa.princeton.edu/",
+        "description": "The undergraduate program at the School of  is known for its rigorous and interdisciplinary approach to pre-professional education. The four-year undergraduate program leads to an A.B. with a concentration in architecture and offers an introduction to the discipline of architecture within the framework of a liberal arts curriculum.",
+        "degree": "ab"
+    },
+    "Art and Archaeology": {
+        "link": "https://artandarchaeology.princeton.edu/",
+        "description": "A foundation in the study of the visual arts, including all periods of European art and architecture as well as African art, Egyptian art and archaeology, Chinese and Japanese art, pre-Columbian art, Greek and Roman art and archaeology, American art, the history of photography, and theory and criticism.",
+        "degree": "ab"
+    },
+    "Astrophysical Sciences": {
+        "link": "http://web.astro.princeton.edu/",
+        "description": "A discipline for those who are fascinated by the prospect of contributing to the search for the universe's hidden secrets. Coursework and independent research on topics that range from planetary science to stars, galaxies, black holes, dark-matter, cosmology, the early universe and more.",
+        "degree": "ab"
+    },
+    "Chemistry": {
+        "link": "http://chemistry.princeton.edu/",
+        "description": "The \"central discipline\" that revolves around making, measuring, modeling and understanding the chemical compounds that make up the world around us. Its subdivisions include catalysis/synthesis, inorganic chemistry, materials, spectroscopy/physical chemistry and theoretical chemistry.",
+        "degree": "ab"
+    },
+    "Classics ": {
+        "link": "https://classics.princeton.edu/programs/undergraduate/overview",
+        "description": "Classics We study various aspects of the ancient world, including Greek and Roman history, culture, literature and philosophy, and their relevance today.  No prior knowledge of Greek or Latin is needed to begin a major.  ",
+        "degree": "ab"
+    },
+    "Comparative Literature": {
+        "link": "http://complit.princeton.edu//",
+        "description": "A far-reaching scholarly enterprise that strengthens cultural connections among people and societies, and bridges disciplines by approaching literature and culture across a wide range of time periods, media and languages.",
+        "degree": "ab"
+    },
+    "Computer Science": {
+        "link": "http://www.cs.princeton.edu/",
+        "description": "A program that ensures in-depth exposure to algorithms and theoretical computer science, computer system design and applications. Students can also pursue computer science in the A.B.",
+        "degree": "bse"
+    },
+    "East Asian Studies": {
+        "link": "http://eastasia.princeton.edu/",
+        "description": "A study of the broad-ranging, cosmopolitan knowledge of the languages and cultures of China, Japan and Korea.",
+        "degree": "ab"
+    },
+    "Ecology and Evolutionary Biology": {
+        "link": "http://www.princeton.edu/eeb/",
+        "description": "In classrooms and laboratories, as well as at field sites around the world, a collaborative unraveling of the mysteries of how animals, plants and microbes function, how they interact with others and the physical environment, how they evolve, and how we can manage our biological heritage to achieve a sustainable future.",
+        "degree": "ab"
+    },
+    "Economics": {
+        "link": "http://economics.princeton.edu/",
+        "description": "An inquiry into social issues such as employment, growth, inflation, globalization, health and poverty using rigorous theoretical and statistical analysis.",
+        "degree": "ab"
+    },
+    "English": {
+        "link": "http://english.princeton.edu/",
+        "description": "Through the lens of language, this program provokes thoughtful consideration of some deep questions of being human: power, the meaning of beauty, personal identity and love. With an emphasis on diversity and history, students encounter the greatest writers such as Toni Morrison, William Shakespeare, Jane Austen, Emily Dickinson and topics that include American Cinema, Children's Literature, Latino/a Studies, food writing, the Harlem Renaissance and Asian-American literature.",
+        "degree": "ab"
+    },
+    "French and Italian": {
+        "link": "http://fit.princeton.edu/",
+        "description": "A global experience in the rich literature and culture of the -speaking worlds.",
+        "degree": "ab"
+    },
+    "Geosciences": {
+        "link": "http://www.princeton.edu/geosciences/",
+        "description": "Chemistry, biology, physics, math and computer science applied to understand Earth's deep interior, surface environments, oceans and climate.",
+        "degree": "ab"
+    },
+    "German": {
+        "link": "http://german.princeton.edu/",
+        "description": "A traditionally strong focus in literature, literary theory and philosophy, with significant new strength in media studies and the visual arts.",
+        "degree": "ab"
+    },
+    "History": {
+        "link": "http://history.princeton.edu/",
+        "description": "A community of scholars with interests spanning social to intellectual, political to military, economic to legal history, and all parts of the globe with research ranging chronologically from late antiquity to the present.",
+        "degree": "ab"
+    },
+    "Mathematics": {
+        "link": "http://www.math.princeton.edu/",
+        "description": "A versatile exploration of a wide variety of fundamental areas of both pure and applied mathematics with some of the best mathematicians in the world, who also hold tea each afternoon at 3:30 p.m. while classes are in session.",
+        "degree": "ab"
+    },
+    "Molecular Biology": {
+        "link": "http://molbio.princeton.edu/",
+        "description": "An exploration of the central questions of 21st century biology, on topics ranging from molecules to genomes.",
+        "degree": "ab"
+    },
+    "Music": {
+        "link": "http://www.princeton.edu/music/",
+        "description": "At the epicenter of a vibrant campus musical culture, a major with an emphasis on writing music or writing about music.",
+        "degree": "ab"
+    },
+    "Near Eastern Studies": {
+        "link": "http://www.princeton.edu/nes/",
+        "description": "An immersive experience in a Near Eastern language and a broad knowledge of the civilizations, history and literatures of the ancient, medieval, and modern Near East and beyond.",
+        "degree": "ab"
+    },
+    "Neuroscience": {
+        "link": "http://pni.princeton.edu/",
+        "description": "A serious study of molecular, cellular, developmental and systems neuroscience as it interfaces with cognitive and behavioral research.",
+        "degree": "ab"
+    },
+    "Philosophy": {
+        "link": "http://philosophy.princeton.edu/",
+        "description": "A full survey of the logic and philosophy of science, philosophy of mind and language, metaphysics and epistemology, value theory and the history of philosophy, including both early modern and ancient.",
+        "degree": "ab"
+    },
+    "Physics": {
+        "link": "http://www.princeton.edu/physics/",
+        "description": "A comprehensive understanding of the physical world, including atoms, solids, radiation, galaxies and living things. Concentrating in physics at Princeton will not only teach you about the structure of physical law, but it will allow you to take part in its discovery.",
+        "degree": "ab"
+    },
+    "Politics": {
+        "link": "http://www.princeton.edu/politics/",
+        "description": "The analysis of political institutions, beliefs, and policies from the perspective of domestic and world politics. The concentration builds understanding of citizenship and government through courses that use a variety of research methods to address topics including elections, development, war, and the nature of justice",
+        "degree": "ab"
+    },
+    "Psychology": {
+        "link": "http://psych.princeton.edu/",
+        "description": "A rigorous understanding of human behavior and mental processes, encompassing sensation, perception, movement, language, reasoning, decision making and social interaction.",
+        "degree": "ab"
+    },
+    "Public Policy (Princeton School of Public and International Affairs)": {
+        "link": "https://spia.princeton.edu/",
+        "description": "Public Policy (Princeton School of Public and International Affairs)A multidisciplinary liberal arts major for students who desire to be engaged in public service and become leaders in the world of public and international affairs.  Students enroll in task forces and policy research seminars on current and important issues in public policy, take core courses in the social sciences and science policy, choose electives from across the university in their policy area of greatest interest, and do fieldwork or engage in policy-relevant cross-cultural experiences.",
+        "degree": "ab"
+    },
+    "Religion": {
+        "link": "http://religion.princeton.edu/",
+        "description": "An examination of religious life, the diverse forms it has taken in different cultures and historical periods, and the questions it poses for theoretical, ethical and political reflection.",
+        "degree": "ab"
+    },
+    "Slavic Languages and Literatures": {
+        "link": "http://slavic.princeton.edu/",
+        "description": "An exploration into the cultures, societies, and languages of Russia and Eastern Europe (including Polish, Czech, Boznian-Serbian-Croatian). Russian language serves as a gateway to the study of literature, politics, cultural anthropology, film and visual arts and Russia's still problematic relationship to the West.",
+        "degree": "ab"
+    },
+    "Sociology": {
+        "link": "http://sociology.princeton.edu/",
+        "description": "A cutting edge undergraduate concentration for people interested in the social dimensions of politics, economics, history, psychology, big data, and demography.",
+        "degree": "ab"
+    },
+    "Spanish and Portuguese": {
+        "link": "http://www.princeton.edu/spo/",
+        "description": "A grounding in Spanish or Portuguese, with related and varied courses in other literatures, as well as in art history, anthropology, sociology, comparative literature and other humanities subjects.",
+        "degree": "ab"
+    },
+    "Chemical and Biological Engineering": {
+        "link": "http://www.princeton.edu/cbe/",
+        "description": "A thorough survey of the chemical, biological, and physical processes used to develop pollution control, pharmaceuticals, semiconductors, adhesives, biopolymers, artificial kidneys, oil refineries, solar panels, ceramics and many other products.",
+        "degree": "bse"
+    },
+    "Civil and Environmental Engineering": {
+        "link": "http://www.princeton.edu/cee/",
+        "description": "Cutting-edge research and forefront innovative teaching prepares students to be creative leaders in addressing XXI-century challenges associated with the built and natural environment in contexts of resilience, sustainability, and livability. The focus areas include structural art, structural design, and building materials; urban environments; water and air quality; climate change and its impacts on water resources and the hydrologic cycle.",
+        "degree": "bse"
+    },
+    "Electrical and Computer Engineering": {
+        "link": "https://ece.princeton.edu/",
+        "description": "A thorough preparation in addressing a variety of crucial societal issues, including efficient lighting, buildings, computing, communications, solar cells, circuits, energy harvesting from the environment, smart power grids, machine learning, informatics, medical imaging, diagnosis and brain imaging.",
+        "degree": "bse"
+    },
+    "Mechanical and Aerospace Engineering": {
+        "link": "http://mae.princeton.edu/",
+        "description": "A hands-on opportunity to design, build and test devices and vehicles, such as cars, aircraft, satellites, engines, robots and control systems.",
+        "degree": "bse"
+    },
+    "Operations Research and Financial Engineering": {
+        "link": "https://orfe.princeton.edu/",
+        "description": "Using quantitative theories, models, methods and algorithms, operations research and financial engineering is a focused specialization in the regulation of financial institutions, energy and the environment (specifically the financialization of commodities, climate change and emissions control), the transportation systems of the future and health care.",
+        "degree": "bse"
+    }
+}
