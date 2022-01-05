@@ -5,7 +5,7 @@ const { Collection } = require('discord.js');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('socials')
-		.setDescription('Replies with Pong!')
+		.setDescription('Find the public socials of other discord members')
 		// https://discordjs.guide/interactions/replying-to-slash-commands.html#parsing-options
 		.addMentionableOption(
 			option => option
@@ -15,7 +15,7 @@ module.exports = {
 	async execute(interaction) {
 		const mentionable = interaction.options.getMentionable('user');
 
-		const socialsChannel = interaction.guild.channels.cache.find(channel => channel.name.includes('general') && channel.type === 'GUILD_TEXT');
+		const socialsChannel = interaction.guild.channels.cache.find(channel => channel.name.includes('socials') && channel.type === 'GUILD_TEXT');
 		// if there is no socials channel
 		if (socialsChannel == null) {
 			return interaction.reply({
@@ -33,18 +33,6 @@ module.exports = {
 
 		const res = await retrieveUserSocial(socialsChannel, mentionable);
 
-		// console.log(socialsChannel.messages.cache.find(m => m));
-		// console.log(socialsChannel.messages)
-		// socialsChannel.messages.fetch({ limit: 100 }).then(messages => {
-		// 	console.log(`Received ${messages.size} messages`);
-		// 	// Iterate through the messages here with the variable "messages".
-		// 	messages.forEach(message => console.log(message.content));
-		// });
-		// console.log(socialsChannel.messages.cache.size);
-		// console.log(await socialsChannel.messages.fetch('928131300546719745'));
-
-		console.log(res);
-
 		return interaction.reply({
 			content: res,
 			ephemeral: true,
@@ -52,6 +40,7 @@ module.exports = {
 	},
 };
 
+// as of now, this function necessitates administrator permissions (not sure of a workaround yet)
 const retrieveUserSocial = async (channel, user) => {
 	let sum_messages = new Collection;
 	let last_id;
