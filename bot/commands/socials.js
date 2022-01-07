@@ -1,6 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { Collection } = require('discord.js');
-
+const { fetchMessageHistory } = require('../utils/fetchMessageHistory');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -14,8 +13,8 @@ module.exports = {
 		),
 	async execute(interaction) {
 		const mentionable = interaction.options.getMentionable('user');
-
 		const socialsChannel = interaction.guild.channels.cache.find(channel => channel.name.includes('socials') && channel.type === 'GUILD_TEXT');
+
 		// if there is no socials channel
 		if (socialsChannel == null) {
 			return interaction.reply({
@@ -31,34 +30,12 @@ module.exports = {
 			});
 		}
 
-		const res = await retrieveUserSocial(socialsChannel, mentionable);
+		const messages = await fetchMessageHistory(socialsChannel);
+		const userSocials = messages.find(m => m.author.id === mentionable.id);
 
 		return interaction.reply({
-			content: res,
+			content: userSocials ? userSocials.content : 'no socials found :(',
 			ephemeral: true,
 		});
 	},
-};
-
-// as of now, this function necessitates administrator permissions (not sure of a workaround yet)
-const retrieveUserSocial = async (channel, user) => {
-	let sum_messages = new Collection;
-	let last_id;
-
-	// note the order will be from earliest to latest
-	while (sum_messages.size % 100 === 0) {
-		const options = { limit: 100 };
-		if (last_id) options.before = last_id;
-
-		const messages = await channel.messages.fetch(options);
-		sum_messages = sum_messages.concat(messages);
-		last_id = messages.last().id;
-	}
-
-	// oldest to latest
-	const oldest_messages = sum_messages.reverse();
-	const userSocials = oldest_messages.find(m => m.author.id === user.id);
-
-
-	return userSocials ? userSocials.content : 'no socials found :(';
 };
