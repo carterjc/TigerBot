@@ -31,7 +31,9 @@ const rest = new REST({ version: '9' }).setToken(process.env.DISCORD_TOKEN);
 	}
 })();
 
-// if you want to make your slash commands in all guilds use "applicationCommands("CLIENT_ID")"
-rest.put(Routes.applicationGuildCommands(process.env.CLIENT_ID, process.env.GUILD_ID), { body: commands })
-	.then(() => console.log('Successfully registered application commands.'))
-	.catch(console.error);
+if (process.env.ENV === 'dev') {
+	// only makes commands available in one guild (good for development) - updated instantly
+	rest.put(Routes.applicationGuildCommands(process.env.CLIENT_ID, process.env.GUILD_ID), { body: commands })
+		.then(() => console.log('Successfully registered application commands.'))
+		.catch(console.error);
+}
