@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Bot to display some facts about Princeton University",
   "main": "index.js",
+  "engines": {
+    "node": "17.x"
+  },
   "scripts": {
     "start": "node .",
     "dev": "nodemon .",
