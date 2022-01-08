@@ -7,8 +7,8 @@
     "node": "17.x"
   },
   "scripts": {
-    "start": "node .",
-    "dev": "nodemon .",
+    "start": "node ./index.js",
+    "dev": "nodemon ./index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Carter Costic",
