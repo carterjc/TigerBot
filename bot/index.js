@@ -1,4 +1,3 @@
-// const fs = require('fs');
 const { Client, Collection, Intents } = require('discord.js');
 const { logger } = require('./utils/logger');
 require('dotenv').config();
@@ -19,4 +18,3 @@ client.logger = logger;
 });
 
 client.login(process.env.DISCORD_TOKEN);
-client.logger.log('started', 'ready');
