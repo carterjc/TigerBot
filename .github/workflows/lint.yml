@@ -15,8 +15,8 @@ jobs:
         run: |
           npm install
           npm run lint
-          git config --global user.email "<github-email-goes-here>"
-          git config --global user.name "<github-name-goes-here>"
+          git config --global user.email "cartercostic@gmail.com"
+          git config --global user.name "carterjc"
           git add .
           git commit -m "fixed ESLint issues"
           git push
