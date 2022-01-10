@@ -14,4 +14,4 @@ jobs:
         working-directory: ./bot
         run: |
           npm install
-          npm run lin
+          npm run lint
