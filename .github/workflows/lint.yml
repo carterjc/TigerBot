@@ -18,5 +18,5 @@ jobs:
           git config --global user.email "cartercostic@gmail.com"
           git config --global user.name "carterjc"
           git add .
-          git commit -m "fixed ESLint issues"
+          git diff-index --quiet HEAD || git commit -m "fixed ESLint issues"
           git push
