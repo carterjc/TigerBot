@@ -6,10 +6,11 @@ module.exports = {
 		.setName('socials')
 		.setDescription('Find the public socials of other discord members')
 		// https://discordjs.guide/interactions/replying-to-slash-commands.html#parsing-options
-		.addMentionableOption(
-			option => option
+		.addMentionableOption(option =>
+			option
 				.setName('user')
-				.setDescription('User you want to view the socials of'),
+				.setDescription('User you want to view the socials of')
+				.setRequired(true),
 		),
 	async execute(interaction) {
 		const mentionable = interaction.options.getMentionable('user');
