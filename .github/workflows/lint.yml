@@ -1,19 +1,16 @@
-name: CI
+name: Linting files on push
 
 on:
   push:
     branches: [ main ]
   pull_request:
-    branches: [ main ]
-
-  workflow_dispatch:
-
 jobs:
   build:
+    name: Run ESLint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install modules
-        run: npm i
+      - name: Installing node_modules
+        run: npm install
       - name: Run ESLint
-        run: eslint . --ext .js
+        run: npm run lint
