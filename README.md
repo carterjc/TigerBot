@@ -18,7 +18,7 @@ If this is developed, we can also add Discord authentication via Princeton email
 
 If you have an idea for the bot or want to report a bug, please open an issue with the appropriate tag in this repo. If you want to contribute to a certain issue, open a new branch titled TB-#. For example, issue #2 would be developed on a branch titled TB-2. You can create a new branch via CLI with `git checkout -b *name*`.
 
-When developing code, you will need to create a .env file in the /bot directory. Enter the following fields:
+When developing code, you will need to create a .env file in the root directory. Enter the following fields:
 
 ```env
 DISCORD_TOKEN=**the bot's token**

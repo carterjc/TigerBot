@@ -2,7 +2,7 @@ const { Client, Collection, Intents } = require('discord.js');
 const { logger } = require('./utils/logger');
 require('dotenv').config();
 
-// Create a new client instance
+// create a new client instance
 const client = new Client({
 	intents: [
 		Intents.FLAGS.GUILDS,
