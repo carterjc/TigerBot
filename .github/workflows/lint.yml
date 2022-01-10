@@ -10,7 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Installing node_modules
-        run: npm install
-      - name: Run ESLint
-        run: npm run lint
+      - name: Install node_modules and run linter
+        working-directory: ./bot
+        run: |
+          npm install
+          npm run lin
