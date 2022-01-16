@@ -7,11 +7,11 @@ module.exports = {
 		.setDescription('Replies with Pong!'),
 	async execute(interaction) {
 		// the julie special
-		const exampleEmbed = new MessageEmbed()
+		const embed = new MessageEmbed()
 			.setTitle('gort ded')
 			.setImage('attachment://gort.jpg');
-		if (interaction.user.id === '493180729358942226') return interaction.reply({ embeds: [exampleEmbed], files: ['./data/gort.jpg'] });
+		if (interaction.user.id === '493180729358942226') return interaction.reply({ embeds: [embed], files: ['./data/gort.jpg'] });
 		// regular command
-		return interaction.reply({ embeds: [exampleEmbed], files: ['./data/gort.jpg'] });
+		return interaction.reply('Pong!');
 	},
 };
