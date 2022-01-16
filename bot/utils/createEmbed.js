@@ -1,7 +1,7 @@
 const { MessageActionRow, MessageButton, MessageEmbed } = require('discord.js');
 
 module.exports = {
-	createEmbed: async function(interaction, fields, title, description) {
+	createEmbed: async function(interaction, fields, title, description, length = 5) {
 		const backId = 'back';
 		const forwardId = 'forward';
 		const backButton = new MessageButton({
@@ -17,11 +17,11 @@ module.exports = {
 			customId: forwardId,
 		});
 
-		const canFitOnOnePage = fields.length <= 5;
+		const canFitOnOnePage = fields.length <= length;
 
 		// fetchReply makes it so embedMessage is not null
 		const embedMessage = await interaction.reply({
-			embeds: [await generateEmbed(0, fields, title, description)],
+			embeds: [await generateEmbed(0, fields, title, description, length)],
 			components: canFitOnOnePage ? [] : [new MessageActionRow({ components: [forwardButton] })],
 			fetchReply: true,
 		});
@@ -38,17 +38,17 @@ module.exports = {
 
 		collector.on('collect', async (i) => {
 			// await i.deferUpdate();
-			i.customId === backId ? (currentIndex -= 5) : (currentIndex += 5);
+			i.customId === backId ? (currentIndex -= length) : (currentIndex += length);
 			// Respond to interaction by updating message with new embed
 			await i.update({
-				embeds: [await generateEmbed(currentIndex, fields, title, description)],
+				embeds: [await generateEmbed(currentIndex, fields, title, description, length)],
 				components: [
 					new MessageActionRow({
 						components: [
 							// back button if it isn't the start
 							...(currentIndex ? [backButton] : []),
 							// forward button if it isn't the end
-							...(currentIndex + 5 < fields.length ? [forwardButton] : []),
+							...(currentIndex + length < fields.length ? [forwardButton] : []),
 						],
 					}),
 				],
@@ -63,12 +63,13 @@ module.exports = {
  * @param {Array} fields fields to be displayed
  * @param {String} title title to be displayed on the embed
  * @param {String} description description to be displayed on the embed
+ * @param {number} length number of fields per page
  * @returns {Promise<MessageEmbed>}
  */
-const generateEmbed = async (start, fields, title, description) => {
-	const current = fields.slice(start, start + 5);
+const generateEmbed = async (start, fields, title, description, length) => {
+	const current = fields.slice(start, start + length);
 
-	if (fields.length > 5) title += ` / ${start + 1}-${start + current.length} out of ${fields.length}`;
+	if (fields.length > length) title += ` / ${start + 1}-${start + current.length} out of ${fields.length}`;
 
 	return new MessageEmbed({
 		color: 0x0099ff,
