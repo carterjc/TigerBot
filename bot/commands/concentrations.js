@@ -21,7 +21,7 @@ module.exports = {
 		Object.entries(concentrations)
 			// eslint-disable-next-line no-unused-vars
 			.filter(([key, value]) => {
-				return value.degree === degreeType;
+				return degreeType ? value.degree === degreeType : value.degree;
 			})
 			.forEach(([key, value]) => {
 				fieldsList.push({
