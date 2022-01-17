@@ -6,7 +6,9 @@ module.exports = {
 		const command = client.commands.get(interaction.commandName);
 		if (!command) return;
 		try {
-			client.logger.log(`User ${interaction.user.username} has run the command /${interaction.commandName} on guild ${interaction.guild.name}`);
+			// if user runs a command with arguments
+			const args = interaction.options.data[0].value;
+			client.logger.log(`User ${interaction.user.username} has run the command /${interaction.commandName} ${args ? `with args '${args}'` : ''} on guild ${interaction.guild.name}`);
 			await command.execute(interaction);
 		}
 		catch (error) {
