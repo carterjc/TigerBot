@@ -1,0 +1,32 @@
+{
+    "Butler": {
+        "r_url": "https://odoc.princeton.edu/about/butler",
+        "description": "Butler College was established in the fall of 1983 and named in honor of businessman and former University trustee Lee D. Butler '22. Paired with First College, Butler is one of three four-year colleges, which house freshman, sophomore, and upperclass students. The college provides room for approximately 550 residents, of which 150 are juniors or seniors. Most of the buildings comprising the Butler complex are relatively new, with many having been completed in 2009. The amphitheater (pictured) is a convenient gathering space and venue for events, and the college also houses an art gallery and innovation space for entrepreneurial students. Head of college is Elizabeth M. Armstrong, Associate Professor in the Department of Sociology, who maintains an office in Wu Hall along with the members of the college staff.",
+        "image": "https://odoc.princeton.edu/sites/odoc/files/styles/basic-page_default/public/Amphitheatersmall.jpg?itok=3XirxlxP"
+    },
+    "First": {
+        "r_url": "https://odoc.princeton.edu/about/wilson",
+        "description": "Paired with geographically adjacent Butler, First College houses about 500 first-year students and sophomores. First College was the first of the six residental colleges to be established, in 1968. The college includes a dance studio, black box theater, and the J Street Media Center and Library. Much of the college complex surrounds the Dodge-Osborn courtyard (pictured). AnneMarie Luijendijk, Professor of Religion, is the head of college. Her offices and those of the college staff are in Wilcox Hall.",
+        "image": "https://odoc.princeton.edu/sites/odoc/files/styles/basic-page_default/public/DodgeOsbornCourtyard.jpg?itok=xqByTvw2"
+    },
+    "Forbes": {
+        "r_url": "https://odoc.princeton.edu/about/residential-colleges/forbes",
+        "description": "Acquired by the University for dormitory use in 1970, the Forbes College property began life in the 1920s as the Princeton Inn, a gracious hotel frequented by visitors to campus. It was remodeled in 1984 through a gift from Malcolm S. Forbes Sr. '41, and named in honor of his son, Malcolm S. Forbes Jr. '70. It joined First College as Princeton's second residential college, and is now a two-year college paired with Whitman. Forbes is home to about 500 first-year students and sophomores, who reside in the Main Inn as well as the New Wing and other adjacent buildings. Its location has historically been considered remote from the rest of campus, but construction of the Arts and Transit complex directly across the street is bringing the campus to Forbes' doorstep in a dramatic way. Forbesians enjoy a view of the golf course from the rear veranda, as well as their own garden. Maria Garlock, Professor of Civil and Environmental Engineering, is head of college, joining the Forbes staff in the college office on the lower level of the Main Inn.",
+        "image": "https://odoc.princeton.edu/sites/odoc/files/styles/basic-page_default/public/forbes-front.jpg?itok=EcxKKhza"
+    },
+    "Mathey": {
+        "r_url": "https://odoc.princeton.edu/about/mathey",
+        "description": "Mathey College was established in the fall of 1983, yet it occupies some of the most iconic collegiate Gothic buildings on campus, several dating from the late 19th century. Partnered with Rockefeller College, Mathey is a four-year college with 400 first-year students and sophomores plus 140 juniors and seniors. The college is named for Dean Mathey, member of the class of 1912, a financier and former University trustee who was associated with Princeton for many decades. Mathey is home to the close-knit Edwards Collective as well as a recording studio for use by students. The head of college is Stacey Sinclair, Professor of Psychology, whose office is located in Hamilton Hall along with the rest of the college staff.",
+        "image": "https://odoc.princeton.edu/sites/odoc/files/styles/basic-page_default/public/MatheyCourtyardExp.jpg?itok=eZYakPZJ"
+    },
+    "Rockefeller": {
+        "r_url": "https://odoc.princeton.edu/about/rockefeller",
+        "description": "Rockefeller College, the two-year complement to Mathey, is universally known as \"Rocky.\" The college was established in the fall of 1982 through donations by Laurance S. Rockefeller '32 in honor of his philanthropist brother, John D. Rockefeller 3rd '29, both University trustees. Rocky is home to about 500 first-year students and sophomores, whose Gothic surroundings are embellished by the distinctive Holder Tower and the opulent dining hall (pictured). Clancy Rowley, Professor of Mechanical and Aerospace Engineering, is the head of college. He and the college staff have offices in Madison Hall.",
+        "image": "https://odoc.princeton.edu/sites/odoc/files/styles/basic-page_default/public/Rocky%20006.JPG?itok=Do63qvQ3"
+    },
+    "Whitman": {
+        "r_url": "https://odoc.princeton.edu/about/whitman",
+        "description": "The most recent member of the residential college system, Whitman College opened its doors in the fall of 2007. The namesake of noted business executive Meg Whitman '77, the four-year college is home to 500 undergrads and is partnered with nearby Forbes. Neo-Gothic in design yet completely modern in terms of its amenities, the college contains its own theater and dance studio. The head of college is Claire Gmachl, Eugene Higgins Professor of Electrical Engineering and Associate Chair, Department of Electrical Engineering. The college office is located in North Hall, Building C.",
+        "image": "https://odoc.princeton.edu/sites/odoc/files/styles/basic-page_default/public/Whitman%20IMG_2031%20copy_1%20small.jpg?itok=JjqGFNzH"
+    }
+}
