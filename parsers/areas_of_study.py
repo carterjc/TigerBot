@@ -12,7 +12,7 @@ def get_certificates():
         # key, value - certificate name, url
         certs_dict[c.a.text.replace(u'\xa0', ' ')] = c.a.get("href")
         # for some reason only one entry on the site has a nbsp (music performance) and it had to go
-    with open("../data/certificates.json", "w") as f:
+    with open("../bot/data/certificates.json", "w") as f:
         f.write(json.dumps(certs_dict, indent=4))
 
 
@@ -65,7 +65,7 @@ def get_concentrations():
             'description': description,
             'degree': 'bse'
         }
-    with open("../data/concentrations.json", "w") as f:
+    with open("../bot/data/concentrations.json", "w") as f:
         f.write(json.dumps(concs_dict, indent=4))
 
 

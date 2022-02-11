@@ -10,7 +10,7 @@ module.exports = {
 		const embed = new MessageEmbed()
 			.setTitle('gort ded')
 			.setImage('attachment://gort.jpg');
-		if (interaction.user.id === '493180729358942226') return interaction.reply({ embeds: [embed], files: ['./data/gort.jpg'] });
+		if (interaction.user.id === '493180729358942226' && Math.floor(Math.random() * 6) !== 0) return interaction.reply({ embeds: [embed], files: ['./data/gort.jpg'] });
 		// regular command
 		return interaction.reply('Pong!');
 	},
