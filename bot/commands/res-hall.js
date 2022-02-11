@@ -24,6 +24,7 @@ module.exports = {
 
 		const hallNames = Object.keys(housing);
 		let embed;
+		const max_length = 900;
 
 		// if parameter is passed through, return specific information for the res hall
 		if (resHall !== '' && resHall !== null && hallNames.includes(resHall)) {
@@ -36,7 +37,13 @@ module.exports = {
 				description: `View information about ${resHall}`,
 				fields: [{
 					name: 'Description',
-					value: housing[resHall].description + `\n\n[Find out more here!](${housing[resHall].r_url})`,
+					value: ((
+						housing[resHall].description.length > max_length
+							?
+							housing[resHall].description.substring(0, max_length) + '...'
+							:
+							housing[resHall].description
+					) + `\n\n[Find out more here!](${housing[resHall].r_url})`),
 				}],
 				timestamp: new Date(),
 			});
