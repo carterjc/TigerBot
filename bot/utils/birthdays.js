@@ -16,7 +16,7 @@ module.exports = {
 		let components;
 
 		function createMessage(arr, bday) {
-			messages.push(arr[Math.floor(Math.random() * arr.length)].replace('*', bday.person.serverName));
+			messages.push(arr[Math.floor(Math.random() * arr.length)].replaceAll('*', bday.person.serverName));
 		}
 
 		data.forEach(bday => {
