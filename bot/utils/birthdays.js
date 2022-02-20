@@ -9,7 +9,8 @@ module.exports = {
 	// birthday tomorrow
 	// birthday is today
 	generateMessages: async function(guild, client) {
-		const data = await parseBirthdays(guild);
+		// don't get why i can't reference directly, but this works
+		const data = await module.exports.parseBirthdays(guild);
 		const messages = [];
 
 		let components;
@@ -40,27 +41,26 @@ module.exports = {
 
 		sendMessages(guild, client, messages, 'tiger-bot');
 	},
-};
+	parseBirthdays: async function(guild) {
+		const birthdaysChannel = guild.channels.cache.find(channel => channel.name.includes('birthdays') && channel.type === 'GUILD_TEXT');
+		const birthdayMessages = await fetchMessageHistory(birthdaysChannel);
 
-async function parseBirthdays(guild) {
-	const birthdaysChannel = guild.channels.cache.find(channel => channel.name.includes('birthdays') && channel.type === 'GUILD_TEXT');
-	const birthdayMessages = await fetchMessageHistory(birthdaysChannel);
+		const data = [];
 
-	const data = [];
-
-	for (const msg of birthdayMessages.values()) {
-		if (parseDate(msg.content)) {
-			data.push(
-				{
-					birthday: parseDate(msg.content),
-					person: await parsePerson(msg),
-				},
-			);
+		for (const msg of birthdayMessages.values()) {
+			if (parseDate(msg.content)) {
+				data.push(
+					{
+						birthday: parseDate(msg.content),
+						person: await parsePerson(msg),
+					},
+				);
+			}
 		}
-	}
 
-	return data;
-}
+		return data;
+	},
+};
 
 // dd/mm/yyyy format
 function parseDate(str) {
