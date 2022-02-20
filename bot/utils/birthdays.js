@@ -43,6 +43,7 @@ module.exports = {
 	},
 	parseBirthdays: async function(guild) {
 		const birthdaysChannel = guild.channels.cache.find(channel => channel.name.includes('birthdays') && channel.type === 'GUILD_TEXT');
+		if (birthdaysChannel === null) return;
 		const birthdayMessages = await fetchMessageHistory(birthdaysChannel);
 
 		const data = [];
