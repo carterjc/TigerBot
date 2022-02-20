@@ -11,6 +11,7 @@ module.exports = {
 	generateMessages: async function(guild, client) {
 		// don't get why i can't reference directly, but this works
 		const data = await module.exports.parseBirthdays(guild);
+		if (data === undefined) return;
 		const messages = [];
 
 		let components;
@@ -43,7 +44,7 @@ module.exports = {
 	},
 	parseBirthdays: async function(guild) {
 		const birthdaysChannel = guild.channels.cache.find(channel => channel.name.includes('birthdays') && channel.type === 'GUILD_TEXT');
-		if (birthdaysChannel === null) return;
+		if (birthdaysChannel === undefined) return;
 		const birthdayMessages = await fetchMessageHistory(birthdaysChannel);
 
 		const data = [];
@@ -67,7 +68,8 @@ module.exports = {
 function parseDate(str) {
 	const re = /(((0[1-9]|[12][0-9]|3[01])([/])(0[13578]|10|12)([/])(\d{4}))|(([0][1-9]|[12][0-9]|30)([/])(0[469]|11)([/])(\d{4}))|((0[1-9]|1[0-9]|2[0-8])([/])(02)([/])(\d{4}))|((29)(\/)(02)([/])([02468][048]00))|((29)([/])(02)([/])([13579][26]00))|((29)([/])(02)([/])([0-9][0-9][0][48]))|((29)([/])(02)([/])([0-9][0-9][2468][048]))|((29)([/])(02)([/])([0-9][0-9][13579][26])))/;
 	const m = str.match(re);
-	return m[0];
+	// m is null if no match
+	return m && m[0];
 }
 
 async function parsePerson(msg) {
