@@ -35,14 +35,23 @@ module.exports = {
 		const messages = await parseBirthdays(interaction.guild);
 		const userBirthday = messages.find(m => m.person.id === mentionable.id);
 
-		// make date readable
-		const components = userBirthday.birthday.split('/');
-		const options = { year: 'numeric', month: 'long', day: 'numeric' };
-		const birthday = new Date(components[2], components[1] - 1, components[0]);
-		const readable = `${birthday.toLocaleDateString('en-US', options)} (${getAge(birthday)} years old)`;
+		// what is actually sent
+		let sendMsg;
+
+		if (!userBirthday) {
+			// make date readable
+			const components = userBirthday.birthday.split('/');
+			const options = { year: 'numeric', month: 'long', day: 'numeric' };
+			const birthday = new Date(components[2], components[1] - 1, components[0]);
+			sendMsg = `${birthday.toLocaleDateString('en-US', options)} (${getAge(birthday)} years old)`;
+		}
+		else {
+			sendMsg = 'no birthday found :(';
+		}
+
 
 		return interaction.reply({
-			content: readable ? readable : 'no birthday found :(',
+			content: sendMsg,
 			ephemeral: true,
 		});
 	},
