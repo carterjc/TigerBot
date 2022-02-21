@@ -38,7 +38,7 @@ module.exports = {
 		// what is actually sent
 		let sendMsg;
 
-		if (!userBirthday) {
+		if (userBirthday) {
 			// make date readable
 			const components = userBirthday.birthday.split('/');
 			const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -48,7 +48,6 @@ module.exports = {
 		else {
 			sendMsg = 'no birthday found :(';
 		}
-
 
 		return interaction.reply({
 			content: sendMsg,
