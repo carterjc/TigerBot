@@ -82,7 +82,8 @@ async function parsePerson(msg) {
 			id: null,
 		} :
 		{
-			serverName: author.nickname,
+			// if you haven't changed your name, serverName would return as null
+			serverName: author.nickname || msg.author.username,
 			discordName: `${msg.author.username}#${msg.author.discriminator}`,
 			id: msg.author.id,
 		};
