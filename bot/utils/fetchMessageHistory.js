@@ -13,6 +13,7 @@ module.exports = {
 			if (last_id) options.before = last_id;
 
 			const messages = await channel.messages.fetch(options);
+			if (messages.size === 0) break;
 			sum_messages = sum_messages.concat(messages);
 			last_id = messages.last().id;
 		}
