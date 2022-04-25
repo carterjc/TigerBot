@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node ./deploy-commands.js && node ./index.js",
     "dev": "node ./deploy-commands.js && nodemon ./index.js",
-    "lint": "eslint . --fix --ext .js",
+    "lint": "sudo eslint . --fix --ext .js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Carter Costic",
