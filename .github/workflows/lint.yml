@@ -19,7 +19,7 @@ jobs:
         working-directory: ./bot
         run: |
           npm install
-          npm run lint
+          sudo npm run lint
           git config --global user.email "cartercostic@gmail.com"
           git config --global user.name "carterjc"
           git add .
