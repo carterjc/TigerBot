@@ -28,10 +28,13 @@ module.exports = {
 
 		if (canFitOnOnePage) return;
 
+		// how long the buttons are active for
+		const activeTime = 60000;
+
 		const collector = await embedMessage.createMessageComponentCollector({
 			// not sure if this works (only the user who sent the interaction can press buttons)
 			filter: ({ user }) => user.id === interaction.user.id,
-			time: 30000,
+			time: activeTime,
 		});
 
 		let currentIndex = 0;
@@ -54,6 +57,11 @@ module.exports = {
 				],
 			});
 		});
+		// setTimeout(function() {
+		// 	forwardButton.setDisabled(true);
+		// 	backButton.setDisabled(true);
+		// }, activeTime);
+		// TODO: NEED TO ABSTRACT A LISTENER SO BAD
 	},
 };
 
