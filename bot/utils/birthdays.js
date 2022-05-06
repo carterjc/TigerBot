@@ -11,8 +11,6 @@ module.exports = {
 	generateMessages: async function(guild, client) {
 		// don't get why i can't reference directly, but this works
 		const data = await module.exports.parseBirthdays(guild);
-		// if someone leaves server after typing birthday in
-		if (data.person === undefined) return;
 		if (data === undefined) return;
 		const messages = [];
 
@@ -23,6 +21,9 @@ module.exports = {
 		}
 
 		data.forEach(bday => {
+			// if someone leaves server after typing birthday in; will be addressed it later versions
+			if (bday.person == null) return;
+
 			components = bday.birthday.split('/');
 			// no Math.abs because we only want upcoming bdays
 			const dist = Math.ceil(
