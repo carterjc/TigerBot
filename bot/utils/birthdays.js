@@ -11,6 +11,8 @@ module.exports = {
 	generateMessages: async function(guild, client) {
 		// don't get why i can't reference directly, but this works
 		const data = await module.exports.parseBirthdays(guild);
+		// if someone leaves server after typing birthday in
+		if (data.person === undefined) return;
 		if (data === undefined) return;
 		const messages = [];
 
@@ -73,7 +75,14 @@ function parseDate(str) {
 }
 
 async function parsePerson(msg) {
-	const author = await msg.guild.members.fetch(msg.author.id);
+	let author;
+	try {
+		author = await msg.guild.members.fetch(msg.author.id);
+		if (author == false) throw 'error';
+	}
+	catch (e) {
+		return null;
+	}
 
 	return msg.content.split(':').length > 1 ?
 		{
