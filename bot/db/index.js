@@ -18,7 +18,7 @@ module.exports = client => {
 		require(`./models/${model}`)(sequelize);
 	}
 
-	sequelize.sync({ force: true, alter: false });
+	sequelize.sync({ alter: false });
 	client.logger.log('Synced all sequelize models', 'log');
 
 	return sequelize;
