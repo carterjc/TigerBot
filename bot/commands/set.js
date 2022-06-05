@@ -61,7 +61,6 @@ module.exports = {
 				row.components[component].setDisabled(true);
 			}
 
-			// cartercostic@princeton.edu
 			collector.on('collect', async i => {
 				await i.deferUpdate();
 				if (i.customId === 'No') {
@@ -70,6 +69,9 @@ module.exports = {
 				if (i.customId === 'Yes') {
 					// update returns the number of rows affected
 					// when changing email, unverify user
+
+					// passes through user object with old email
+					removeRoles(client, interaction, user);
 					await client.db.models.Users.update({ email: email, verified: false, verifyEmailTime: null, verifyToken: null, verifyTokenTries: 0 }, { where: { uid: interaction.user.id } });
 					user = await client.db.models.Users.findOne({ where: { uid: interaction.user.id } });
 					if (user.email) return await interaction.editReply({ content: `Successfully set email address to ${user.email}`, components: [] });
@@ -94,3 +96,25 @@ module.exports = {
 		}
 	},
 };
+
+async function removeRoles(client, interaction, user) {
+	// to be called when user is unverified (ie changes their email after being verified)
+
+	const verifiedRole = interaction.guild.roles.cache.find(r => r.name === 'Verified');
+	interaction.member.roles.remove(verifiedRole);
+	client.logger.log(`Removed role ${verifiedRole.name} from user ${interaction.user.username}#${interaction.user.discriminator}`, 'log');
+
+	const emailDomain = user.email.split('@')[1];
+
+	for (const school of Object.values(emailAllowList.universities)) {
+		if (school.domain === emailDomain) {
+			// check to see if user has the particular school role
+			const schoolRole = interaction.member.roles.cache.find(r => r.name === school.role);
+
+			if (schoolRole) {
+				interaction.member.roles.remove(schoolRole);
+				client.logger.log(`Removed role ${schoolRole.name} from user ${interaction.user.username}#${interaction.user.discriminator}`, 'log');
+			}
+		}
+	}
+}

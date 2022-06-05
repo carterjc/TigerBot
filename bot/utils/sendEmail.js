@@ -16,7 +16,7 @@ module.exports = {
 		sgMail
 			.send(msg)
 			.then(() => {
-				client.logger.log(`Email sent to ${to} from ${from}`, 'log');
+				client.logger.log(`Email sent to ${to} from ${from} - ${text}`, 'log');
 			})
 			.catch((error) => {
 				client.logger.log(error, 'error');

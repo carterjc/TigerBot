@@ -121,9 +121,6 @@ async function sendVerificationEmail(client, interaction, user) {
 	const token = Math.floor(Math.random() * 999999) + 100000;
 	await client.db.models.Users.update({ verifyToken: token, verifyEmailTime: Date.now(), verifyTokenTries: 0 }, { where: { uid: interaction.user.id } });
 
-
-	console.log(token);
-
 	let res = null;
 
 	res = sendEmail(
@@ -161,6 +158,8 @@ async function addRoles(client, interaction, user) {
 
 			interaction.member.roles.add(verifiedRole);
 			client.logger.log(`Added role ${verifiedRole.name} to user ${interaction.user.username}#${interaction.user.discriminator}`, 'log');
+
+			return;
 		}
 	}
 }
