@@ -30,10 +30,13 @@ When developing code, you will need to create a .env file in the root directory.
 
 ```env
 DISCORD_TOKEN=**the bot's token**
+SENDGRID_API_KEY=**sendgrid api key token**
 CLIENT_ID=**the bot's id**
 GUILD_ID=**the testing server id**
 ENV=dev
 ```
+
+Note: if you don't plan on testing email verification functionality, don't include the `SENDGRID_API_KEY` field.
 
 For now, please create a bot of your own and use its token for development. In order to find the ids, enter into Discord's development mode under Settings > Advanced > Developer Mode. Then you can right click on any object and press 'copy id'.
 
