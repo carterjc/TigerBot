@@ -12,6 +12,7 @@ const client = new Client({
 
 client.commands = new Collection();
 client.logger = logger;
+client.db = require('./db')(client);
 
 ['commands', 'events'].forEach(handler => {
 	require(`./handlers/${handler}`)(client);

@@ -18,7 +18,7 @@ module.exports = {
 					}` +
 					`on guild ${interaction.guild.name}`,
 				);
-			await command.execute(interaction);
+			await command.execute(interaction, client);
 		}
 		catch (error) {
 			client.logger.log(error, 'error');
