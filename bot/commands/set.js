@@ -48,7 +48,10 @@ module.exports = {
 
 
 		if (user.dataValues.email) {
-			await interaction.reply({ content: 'You currently have an associated email address, do you want to change it?', components: [row] });
+			await interaction.reply({
+				content: 'You currently have an associated email address, do you want to change it? If you are already verified, this will unverify you.',
+				components: [row],
+			});
 
 			const collector = interaction.channel.createMessageComponentCollector({
 				componentType: 'BUTTON',
@@ -72,9 +75,25 @@ module.exports = {
 
 					// passes through user object with old email
 					removeRoles(client, interaction, user);
-					await client.db.models.Users.update({ email: email, verified: false, verifyEmailTime: null, verifyToken: null, verifyTokenTries: 0 }, { where: { uid: interaction.user.id } });
+
+					await client.db.models.Users.update({
+						fName: null,
+						lName: null,
+						email: email,
+						gradYear: null,
+						verified: false,
+						verifyEmailTime: null,
+						verifyToken: null,
+						verifyTokenTries: 0,
+					}, { where: { uid: interaction.user.id } });
+
 					user = await client.db.models.Users.findOne({ where: { uid: interaction.user.id } });
-					if (user.email) return await interaction.editReply({ content: `Successfully set email address to ${user.email}`, components: [] });
+					if (user.email) {
+						return await interaction.editReply({
+							content: `Successfully set email address to ${user.email}. Be sure to verify yourself with /verify.`,
+							components: [],
+						});
+					}
 				}
 				collector.stop();
 			});
@@ -100,9 +119,11 @@ module.exports = {
 async function removeRoles(client, interaction, user) {
 	// to be called when user is unverified (ie changes their email after being verified)
 
-	const verifiedRole = interaction.guild.roles.cache.find(r => r.name === 'Verified');
-	interaction.member.roles.remove(verifiedRole);
-	client.logger.log(`Removed role ${verifiedRole.name} from user ${interaction.user.username}#${interaction.user.discriminator}`, 'log');
+	const verifiedRole = interaction.member.roles.cache.find(r => r.name === 'Verified');
+	if (verifiedRole) {
+		interaction.member.roles.remove(verifiedRole);
+		client.logger.log(`Removed role ${verifiedRole.name} from user ${interaction.user.username}#${interaction.user.discriminator}`, 'log');
+	}
 
 	const emailDomain = user.email.split('@')[1];
 
@@ -117,4 +138,13 @@ async function removeRoles(client, interaction, user) {
 			}
 		}
 	}
+
+	// remove grad year roles
+	const filteredRoles = interaction.member.roles.cache.filter((r) => /^\d{2}$/.test(r.name));
+	filteredRoles.forEach(r => {
+		interaction.member.roles.remove(r);
+		client.logger.log(`Removed role ${r.name} from user ${interaction.user.username}#${interaction.user.discriminator}`, 'log');
+	});
+
+	return;
 }
