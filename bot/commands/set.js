@@ -18,15 +18,15 @@ module.exports = {
 		const email = interaction.options.getString('email');
 		const emailDomain = email.split('@')[1];
 
-		if (emailDomain == undefined) return await interaction.reply('Please be sure to enter a valid email address');
+		if (emailDomain == undefined) return await interaction.reply({ content: 'Please be sure to enter a valid email address', ephemeral: true });
 
 		const dupEmail = await client.db.models.Users.findOne({ where: { email: email, verified: true } });
-		if (dupEmail) return await interaction.reply('This email is already used with a verified account. Please use another email');
+		if (dupEmail) return await interaction.reply({ content: 'This email is already used with a verified account. Please use another email', ephemeral: true });
 
 		// school is an object with key:value mappings of keys
 		// ex. { domain: "princeton.edu" }
 		for (const school of Object.values(emailAllowList.universities)) {
-			if (emailDomain !== school.domain) return await interaction.reply(`Sorry, the domain ${emailDomain} is not currently supported`);
+			if (emailDomain !== school.domain) return await interaction.reply({ content: `Sorry, the domain ${emailDomain} is not currently supported`, ephemeral: true });
 
 		}
 
@@ -35,7 +35,7 @@ module.exports = {
 			where: { uid: interaction.user.id },
 		});
 
-		if (email === user.email) return await interaction.reply(`Your email is already set to ${email}`);
+		if (email === user.email) return await interaction.reply({ content: `Your email is already set to ${email}`, ephemeral: true });
 
 		const row = new MessageActionRow()
 			.addComponents(
@@ -54,6 +54,7 @@ module.exports = {
 			await interaction.reply({
 				content: 'You currently have an associated email address, do you want to change it? If you are already verified, this will unverify you.',
 				components: [row],
+				ephemeral: true,
 			});
 
 			const collector = interaction.channel.createMessageComponentCollector({
@@ -73,6 +74,7 @@ module.exports = {
 					i.editReply({
 						content: `You selected ${i.customId.toLowerCase()}. Email change cancelled.`,
 						components: [],
+						ephemeral: true,
 					});
 				}
 				if (i.customId === 'Yes') {
@@ -98,6 +100,7 @@ module.exports = {
 						return await interaction.editReply({
 							content: `Successfully set email address to ${user.email}. Be sure to verify yourself with /verify.`,
 							components: [],
+							ephemeral: true,
 						});
 					}
 				}
@@ -106,7 +109,7 @@ module.exports = {
 
 			collector.on('end', async collected => {
 				if (collected.size === 0) {
-					interaction.editReply({ content: 'You didn\'t select anything', components: [row] });
+					interaction.editReply({ content: 'You didn\'t select anything', components: [row], ephemeral: true });
 				}
 			});
 		}
@@ -117,7 +120,7 @@ module.exports = {
 
 			user = await client.db.models.Users.findOne({ where: { uid: interaction.user.id } });
 
-			if (user.email) return await interaction.reply(`Successfully set email address to ${user.email}`);
+			if (user.email) return await interaction.reply({ content: `Successfully set email address to ${user.email}`, ephemeral: true });
 		}
 	},
 };
