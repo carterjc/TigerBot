@@ -92,6 +92,10 @@ module.exports = {
 						await i.editReply({ content: 'Verification email was not resent', components: [] });
 					}
 					if (i.customId === 'Yes') {
+						// check if a verified account exists with this email
+						const dupEmail = await client.db.models.Users.findOne({ where: { email: user.email, verified: true } });
+						if (dupEmail) return await interaction.reply('This email is already used with a verified account. Please use another email');
+
 						const res = sendVerificationEmail(client, interaction, user);
 						if (!res) {
 							await i.editReply({ content: 'There was an issue sending the verification email. Please try again later', components: [] });
@@ -115,6 +119,10 @@ module.exports = {
 			}
 		}
 		else {
+			// check if a verified account exists with this email
+			const dupEmail = await client.db.models.Users.findOne({ where: { email: user.email, verified: true } });
+			if (dupEmail) return await interaction.reply('This email is already used with a verified account. Please use another email');
+
 			const res = sendVerificationEmail(client, interaction, user);
 			if (!res) {
 				return await interaction.reply('There was an issue sending the verification email. Please try again later');

@@ -20,6 +20,9 @@ module.exports = {
 
 		if (emailDomain == undefined) return await interaction.reply('Please be sure to enter a valid email address');
 
+		const dupEmail = await client.db.models.Users.findOne({ where: { email: email, verified: true } });
+		if (dupEmail) return await interaction.reply('This email is already used with a verified account. Please use another email');
+
 		// school is an object with key:value mappings of keys
 		// ex. { domain: "princeton.edu" }
 		for (const school of Object.values(emailAllowList.universities)) {
@@ -67,7 +70,10 @@ module.exports = {
 			collector.on('collect', async i => {
 				await i.deferUpdate();
 				if (i.customId === 'No') {
-					i.editReply({ content: `You selected ${i.customId.toLowerCase()}. Email change cancelled.`, components: [] });
+					i.editReply({
+						content: `You selected ${i.customId.toLowerCase()}. Email change cancelled.`,
+						components: [],
+					});
 				}
 				if (i.customId === 'Yes') {
 					// update returns the number of rows affected
