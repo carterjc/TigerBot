@@ -142,14 +142,26 @@ async function sendVerificationEmail(client, interaction, user) {
 
 	let res = null;
 
-	res = sendEmail(
-		user.email,
-		'princeton.tigerbot@gmail.com',
-		'Discord Verification Code from TigerBot',
-		`Your verification token is: ${token}`,
-		`Your verification token is: ${token}`,
-		client,
-	);
+	// send using raw text/html
+	// res = sendEmail({
+	// 	to: user.email,
+	// 	from: 'princeton.tigerbot@gmail.com',
+	// 	subject: 'Discord Verification Code from TigerBot',
+	// 	html: `Your verification token is: ${token}`,
+	// 	text: `Your verification token is: ${token}`,
+	// 	client: client,
+	// });
+
+	// send using template
+	res = sendEmail({
+		to: user.email,
+		from: 'princeton.tigerbot@gmail.com',
+		templateId: 'd-e6d813e71f464055ac078f5ef18e1269',
+		dynamicTemplateData: {
+			'token': token,
+		},
+		client: client,
+	});
 
 	// res is null is there is an error like a rate limit, etc
 	return res;
