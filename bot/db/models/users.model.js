@@ -8,6 +8,8 @@ module.exports = (sequelize) => {
 		uid: DataTypes.STRING,
 		fName: DataTypes.TEXT,
 		lName: DataTypes.TEXT,
+		nickname: DataTypes.TEXT,
+		gradYear: DataTypes.INTEGER,
 		email: DataTypes.STRING,
 		birthday: DataTypes.DATEONLY,
 		verified: {
