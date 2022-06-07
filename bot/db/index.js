@@ -22,6 +22,8 @@ module.exports = async client => {
 	// this parsing should allow continuous uptime when vars change + less developer upkeep
 	if (process.env.DATABASE_URL) {
 		// type://user:password@host:port/database
+
+		// *?  Zero or more, reluctant
 		const parsedURL = process.env.DATABASE_URL.match(/(.*?):\/\/(.*?):(.*?)@(.*?):(.*?)\/(.*)/);
 		// uses destructuring, unsure on most intutive structure here
 		[ DB_TYPE, DB_HOST, DB_PORT, DB_USER, DB_PASS, DB_NAME ] = [ parsedURL[1], parsedURL[4], parsedURL[5], parsedURL[2], parsedURL[3], parsedURL[6] ];
@@ -58,7 +60,10 @@ module.exports = async client => {
 			port: DB_PORT,
 			ssl: true,
 			dialectOptions: {
-				ssl: true,
+				ssl: {
+					require: true,
+					rejectUnauthorized: false,
+				},
 			},
 		});
 	}
