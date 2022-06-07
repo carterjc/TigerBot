@@ -50,11 +50,16 @@ module.exports = async client => {
 	else {
 		client.logger.log(`Connecting to ${types[type].name} database...`, 'log');
 
+		// note the heroku postgres db is the hobby version
 		sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASS, {
 			dialect: types[type].dialect,
 			host: DB_HOST,
 			logging: false,
 			port: DB_PORT,
+			ssl: true,
+			dialectOptions: {
+				ssl: true,
+			},
 		});
 	}
 
