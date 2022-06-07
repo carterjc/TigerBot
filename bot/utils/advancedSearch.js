@@ -3,11 +3,20 @@ const { parse } = require('node-html-parser');
 
 module.exports = {
 	ptonAdvancedSearch: async function(client, email) {
-		const url = `https://www.princeton.edu/search/people-advanced?e=${email}&ef=eq`;
+		let url = `https://www.princeton.edu/search/people-advanced?e=${email}&ef=eq`;
 
 		try {
-			const res = await axios.get(url);
-			const root = parse(res.data);
+			let res = await axios.get(url);
+			let root = parse(res.data);
+
+			// see if email returns no result (may happen if user created an alias but didn't enter it here)
+			const noResult = root.querySelector('#block-tony-content > p');
+			if (noResult) {
+				const netId = email.match(/(\w{2}\d{4})/)[0];
+				url = `https://www.princeton.edu/search/people-advanced?i=${netId}&if=eq`;
+				res = await axios.get(url);
+				root = parse(res.data);
+			}
 
 			const gradElement = root.querySelector('#block-tony-content > div > div > div > div.people-search-result-department.columns.small-12.medium-6.large-3');
 			const gradYear = gradElement.childNodes[0]._rawText.trim().match(/\d{4}$/g)[0];
