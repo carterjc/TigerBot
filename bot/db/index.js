@@ -9,7 +9,7 @@ const types = require('./dialects');
 
 module.exports = async client => {
 
-	const {
+	let {
 		DB_TYPE,
 		DB_HOST,
 		DB_PORT,
@@ -17,6 +17,15 @@ module.exports = async client => {
 		DB_PASS,
 		DB_NAME,
 	} = process.env;
+
+	// heroku uses a DATABASE_URL config var which is automatically loaded based on the postgres plugin
+	// this parsing should allow continuous uptime when vars change + less developer upkeep
+	if (process.env.DATABASE_URL) {
+		// type://user:password@host:port/database
+		const parsedURL = process.env.DATABASE_URL.match(/(.*?):\/\/(.*?):(.*?)@(.*?):(.*?)\/(.*)/);
+		// uses destructuring, unsure on most intutive structure here
+		[ DB_TYPE, DB_HOST, DB_PORT, DB_USER, DB_PASS, DB_NAME ] = [ parsedURL[1], parsedURL[4], parsedURL[5], parsedURL[2], parsedURL[3], parsedURL[6] ];
+	}
 
 	// defaults type to sqlite
 	const type = (DB_TYPE || 'sqlite').toLowerCase();
