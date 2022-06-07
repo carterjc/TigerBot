@@ -33,7 +33,7 @@ module.exports = {
 				return await interaction.reply({ content: 'Too many verification attempts. Please request a new code.', ephemeral: true });
 			}
 			if (token === user.verifyToken) {
-				await client.db.models.Users.update({ verified: true, verifyEmailTime: null, verifyToken: null, verifyTokenTries: 0 }, { where: { uid: interaction.user.id } });
+				await client.db.models.Users.update({ verified: true, verifyToken: null, verifyTokenTries: 0 }, { where: { uid: interaction.user.id } });
 				// log successful verification
 				client.logger.log(`User ${interaction.user.username}#${interaction.user.discriminator} was successfully verified`, 'log');
 
