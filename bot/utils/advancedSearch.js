@@ -3,20 +3,20 @@ const { parse } = require('node-html-parser');
 
 module.exports = {
 	ptonAdvancedSearch: async function(client, email) {
-		let url = `https://www.princeton.edu/search/people-advanced?e=${email}&ef=eq`;
+		// note that if the user creates an alias for their email, a netid email lookup won't work
+		const netId = email.match(/(\w{2}\d{4})/);
 
 		try {
-			let res = await axios.get(url);
-			let root = parse(res.data);
+			const url = netId ?
+				`https://www.princeton.edu/search/people-advanced?i=${netId[0]}&if=eq`
+				:
+				`https://www.princeton.edu/search/people-advanced?e=${email}&ef=eq`;
 
-			// see if email returns no result (may happen if user created an alias but didn't enter it here)
+			const res = await axios.get(url);
+			const root = parse(res.data);
+
 			const noResult = root.querySelector('#block-tony-content > p');
-			if (noResult) {
-				const netId = email.match(/(\w{2}\d{4})/)[0];
-				url = `https://www.princeton.edu/search/people-advanced?i=${netId}&if=eq`;
-				res = await axios.get(url);
-				root = parse(res.data);
-			}
+			if (noResult) throw 'Lookup returned no result';
 
 			const gradElement = root.querySelector('#block-tony-content > div > div > div > div.people-search-result-department.columns.small-12.medium-6.large-3');
 			const gradYear = gradElement.childNodes[0]._rawText.trim().match(/\d{4}$/g)[0];
@@ -29,7 +29,7 @@ module.exports = {
 
 			client.logger.log(`Queried ${url}: ${email} is associated with grad year ${gradYear} and name ${fName} ${lName}`, 'log');
 
-			return { 'fName': fName.normalize('NFC'), 'lName': lName.normalize('NFC'), 'gradYear': gradYear };
+			return { 'fName': fName, 'lName': lName, 'gradYear': gradYear };
 		}
 		catch (err) {
 			client.logger.log(`Error with Princeton advanced search query: ${err}`, 'error');
