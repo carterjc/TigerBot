@@ -25,15 +25,15 @@ module.exports = {
 
 		let res = null;
 
-		sgMail
-			.send(msg)
-			.then(() => {
-				client.logger.log(`Email sent to ${to} from ${from}: ${text ? text : 'used template ' + templateId}`, 'log');
-			})
-			.catch((error) => {
-				client.logger.log(error, 'error');
-				res = error;
-			});
+		try {
+			await sgMail.send(msg);
+			client.logger.log(`Email sent to ${to} from ${from}: ${text ? text : 'used template ' + templateId}`, 'log');
+
+		}
+		catch (error) {
+			res = { 'message': error.response.body.errors[0].message, 'statusCode': error.code };
+			client.logger.log(error, 'error');
+		}
 
 		return res;
 	},
