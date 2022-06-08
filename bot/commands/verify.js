@@ -96,7 +96,7 @@ module.exports = {
 						const dupEmail = await client.db.models.Users.findOne({ where: { email: user.email, verified: true } });
 						if (dupEmail) return await interaction.reply({ content: 'This email is already used with a verified account. Please use another email', ephemeral: true });
 
-						const res = sendVerificationEmail(client, interaction, user);
+						const res = await sendVerificationEmail(client, interaction, user);
 						if (!res) {
 							await i.editReply({ content: 'There was an issue sending the verification email. Please try again later', components: [], ephemeral: true });
 						}
@@ -123,7 +123,7 @@ module.exports = {
 			const dupEmail = await client.db.models.Users.findOne({ where: { email: user.email, verified: true } });
 			if (dupEmail) return await interaction.reply({ content: 'This email is already used with a verified account. Please use another email', ephemeral: true });
 
-			const res = sendVerificationEmail(client, interaction, user);
+			const res = await sendVerificationEmail(client, interaction, user);
 			if (!res) {
 				return await interaction.reply({ content: 'There was an issue sending the verification email. Please try again later', ephemeral: true });
 			}
