@@ -22,12 +22,14 @@ module.exports = {
 			const gradYear = gradElement.childNodes[0]._rawText.trim().match(/\d{4}$/g)[0];
 
 			const nameElement = root.querySelector('#block-tony-content > div > div > div > div.people-search-result-name.columns.small-11.large-3.toggleparent');
-			const fName = nameElement.childNodes[1].childNodes[0]._rawText.split(', ')[1].split(' ')[0];
-			const lName = nameElement.childNodes[1].childNodes[0]._rawText.split(', ')[0];
+			const fName = nameElement.childNodes[1].childNodes[0]._rawText.split(', ')[1].split(' ')[0]
+				.replace('&#039;', '\'');
+			const lName = nameElement.childNodes[1].childNodes[0]._rawText.split(', ')[0]
+				.replace('&#039;', '\'');
 
 			client.logger.log(`Queried ${url}: ${email} is associated with grad year ${gradYear} and name ${fName} ${lName}`, 'log');
 
-			return { 'fName': fName, 'lName': lName, 'gradYear': gradYear };
+			return { 'fName': fName.normalize('NFC'), 'lName': lName.normalize('NFC'), 'gradYear': gradYear };
 		}
 		catch (err) {
 			client.logger.log(`Error with Princeton advanced search query: ${err}`, 'error');

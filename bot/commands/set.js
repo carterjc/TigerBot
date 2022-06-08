@@ -21,6 +21,8 @@ module.exports = {
 		if (emailDomain == undefined) return await interaction.reply({ content: 'Please be sure to enter a valid email address', ephemeral: true });
 
 		const dupEmail = await client.db.models.Users.findOne({ where: { email: email, verified: true } });
+
+		if (dupEmail && dupEmail.email === email) return await interaction.reply({ content: 'You are already verified with this email!', ephemeral: true });
 		if (dupEmail) return await interaction.reply({ content: 'This email is already used with a verified account. Please use another email', ephemeral: true });
 
 		// school is an object with key:value mappings of keys
