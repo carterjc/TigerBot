@@ -3,6 +3,18 @@
         "Princeton University": {
             "domain": "princeton.edu",
             "role": "tiger"
+        },
+        "University of Pennsylvania": {
+            "domain": "upenn.edu",
+            "role": "upenn"
+        },
+        "Harvard University": {
+            "domain": "harvard.edu",
+            "role": "harvard"
+        },
+        "Brown University": {
+            "domain": "brown.edu",
+            "role": "brown"
         }
     }
 }

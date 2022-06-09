@@ -23,18 +23,19 @@ module.exports = {
 			};
 		}
 
-		let res = null;
-
 		try {
 			await sgMail.send(msg);
 			client.logger.log(`Email sent to ${to} from ${from}: ${text ? text : 'used template ' + templateId}`, 'log');
 
+			// return null if nothing is wrong (can change later)
+			return null;
+
 		}
 		catch (error) {
-			res = { 'message': error.response.body.errors[0].message, 'statusCode': error.code };
-			client.logger.log(error, 'error');
-		}
+			const res = { 'message': error.response.body.errors[0].message, 'statusCode': error.code };
+			client.logger.log(res.message, 'error');
 
-		return res;
+			return res;
+		}
 	},
 };

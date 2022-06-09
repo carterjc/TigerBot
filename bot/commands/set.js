@@ -27,9 +27,8 @@ module.exports = {
 
 		// school is an object with key:value mappings of keys
 		// ex. { domain: "princeton.edu" }
-		for (const school of Object.values(emailAllowList.universities)) {
-			if (emailDomain !== school.domain) return await interaction.reply({ content: `Sorry, the domain ${emailDomain} is not currently supported`, ephemeral: true });
-
+		if (!Object.values(emailAllowList.universities).some(school => school.domain === emailDomain)) {
+			return await interaction.reply({ content: `Sorry, the domain ${emailDomain} is not currently supported`, ephemeral: true });
 		}
 
 		// eslint-disable-next-line prefer-const

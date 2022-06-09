@@ -97,7 +97,8 @@ module.exports = {
 						if (dupEmail) return await interaction.reply({ content: 'This email is already used with a verified account. Please use another email', ephemeral: true });
 
 						const res = await sendVerificationEmail(client, interaction, user);
-						if (!res) {
+
+						if (res) {
 							await i.editReply({ content: 'There was an issue sending the verification email. Please try again later', components: [], ephemeral: true });
 						}
 						else {
@@ -124,11 +125,12 @@ module.exports = {
 			if (dupEmail) return await interaction.reply({ content: 'This email is already used with a verified account. Please use another email', ephemeral: true });
 
 			const res = await sendVerificationEmail(client, interaction, user);
-			if (!res) {
+
+			if (res) {
 				return await interaction.reply({ content: 'There was an issue sending the verification email. Please try again later', ephemeral: true });
 			}
 			else {
-				return await interaction.reply({ content: `Email sent to ${user.email}!`, ephemeral: true });
+				return await interaction.reply({ content: `Verification email sent to ${user.email}!`, ephemeral: true });
 			}
 		}
 	},
