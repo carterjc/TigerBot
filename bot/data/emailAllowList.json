@@ -15,6 +15,14 @@
         "Brown University": {
             "domain": "brown.edu",
             "role": "brown"
+        },
+        "Dartmouth University": {
+            "domain": "dartmouth.edu",
+            "role": "dartmouth"
+        },
+        "Yale University": {
+            "domain": "yale.edu",
+            "role": "yale"
         }
     }
 }
