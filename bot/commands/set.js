@@ -27,7 +27,7 @@ module.exports = {
 
 		// school is an object with key:value mappings of keys
 		// ex. { domain: "princeton.edu" }
-		if (!Object.values(emailAllowList.universities).some(school => school.domain === emailDomain)) {
+		if (!Object.values(emailAllowList.universities).some(school => emailDomain.includes(school.domain))) {
 			return await interaction.reply({ content: `Sorry, the domain ${emailDomain} is not currently supported`, ephemeral: true });
 		}
 
