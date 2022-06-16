@@ -188,7 +188,7 @@ async function addRoles(client, interaction, user) {
 
 	// add school roles
 	for (const school of Object.values(emailAllowList.universities)) {
-		if (school.domain === emailDomain) {
+		if (emailDomain.includes(school.domain)) {
 			const schoolRole = interaction.guild.roles.cache.find(r => r.name === school.role);
 			if (!schoolRole) {
 				client.logger.log(`Role ${school.role} not found`, 'error');
